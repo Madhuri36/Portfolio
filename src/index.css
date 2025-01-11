@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-webkit-scrollbar {
+  width: 8px; 
+  height: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #000; 
+  border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+:root{
+  font-family:"Inter", sans-serif;
+  font-optical-sizing: auto;
+  background: #000;
+  color:#fff;
+  scroll-behavior: smooth;
+}
+
+
+.bg-image{
+  background-image: url("./assests/hero-img.webp");
+}
+
+#work, #about, #experience, #skills,  #contact{
+  scroll-margin-top:80px;
+}
+
