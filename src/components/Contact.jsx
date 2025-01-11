@@ -49,7 +49,6 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSending(true);
-    // Simulate sending delay
     setTimeout(() => {
       setIsSending(false);
     }, 2000);
@@ -57,77 +56,106 @@ const Contact = () => {
 
   return (
     <section className="relative min-h-screen" id="contact">
-      <div className="relative z-10 container mx-auto px-6 py-10 md:py-10">
+      <div className="relative z-10 container mx-auto px-6 py-10 md:py-20">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="space-y-12"
+          className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12"
         >
-          {/* Header Section */}
-          <motion.div variants={itemVariants} className="text-center space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400">Touch</span>
-            </h1>
-            <p className="text-stone-200 text-lg md:text-xl max-w-3xl mx-auto">
-              Let's collaborate on the next project or discuss opportunities together!
-            </p>
+          {/* Left Section - Content */}
+          <motion.div variants={itemVariants} className="w-full md:w-1/2 space-y-12 text-center md:text-left">
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-white">
+                Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400">Connect!</span>
+              </h1>
+              <p className="text-stone-200 text-lg md:text-xl mx-auto md:mx-0">
+                I'm currently looking for new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              </p>
+            </div>
+
+            {/* Social Media Links */}
+            <div className="flex gap-8 justify-center md:justify-start">
+              {[
+                {
+                  icon: FaLinkedin,
+                  href: "https://www.linkedin.com/in/sai-madhuri-bodapati/",
+                  hoverColor: "hover:text-yellow-300",
+                },
+                {
+                  icon: FaGithub,
+                  href: "https://github.com/Madhuri36",
+                  hoverColor: "hover:text-orange-400",
+                },
+                {
+                  icon: FaInstagram,
+                  href: "https://www.instagram.com/sai.madhurii?igsh=MWM1eGFpZ284N2s2Yg==",
+                  hoverColor: "hover:text-pink-400",
+                },
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className={`text-white ${social.hoverColor} text-3xl md:text-4xl transition-colors duration-300 hover:scale-110 transform`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <social.icon />
+                </a>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Contact Form */}
-          <motion.div variants={itemVariants} className="max-w-2xl mx-auto">
-            <motion.div
-              className="backdrop-blur-sm border border-white/10 rounded-2xl p-8"
-            >
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label className="text-stone-200 text-sm font-medium">Name</label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300/50 transition-all duration-300"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-stone-200 text-sm font-medium">Email</label>
-                  <input
-                    type="email"
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300/50 transition-all duration-300"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-stone-200 text-sm font-medium">Message</label>
-                  <textarea
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300/50 transition-all duration-300 min-h-[150px]"
-                    placeholder="Your message..."
-                  />
-                </div>
-                <div className="flex justify-center">
-                  <motion.button
-                    type="submit"
-                    className="group relative inline-flex items-center gap-2 px-6 py-2 text-sm text-white rounded-lg overflow-hidden"
-                    variants={buttonVariants}
-                    whileHover="hover"
-                    whileTap="tap"
+          {/* Right Section - Form */}
+          <motion.div variants={itemVariants} className="w-full md:w-1/2 flex justify-center md:justify-start">
+            <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md">
+              <div className="space-y-1">
+                <label className="text-stone-200 text-sm font-medium">Name</label>
+                <input
+                  type="text"
+                  required
+                  className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300/50 transition-all duration-300"
+                  placeholder="Your name"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="text-stone-200 text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  required
+                  className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300/50 transition-all duration-300"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="text-stone-200 text-sm font-medium">Message</label>
+                <textarea
+                  required
+                  className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300/50 transition-all duration-300 min-h-[120px]"
+                  placeholder="Your message..."
+                />
+              </div>
+              <div className="flex justify-center md:justify-start">
+                <motion.button
+                  type="submit"
+                  className="group relative inline-flex items-center gap-2 px-4 py-2 text-sm text-white rounded-lg overflow-hidden"
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 via-orange-400/20 to-pink-400/20 group-hover:opacity-70 transition-opacity duration-300" />
+                  <span className="absolute inset-0 backdrop-blur-sm border border-white/10" />
+                  <span className="relative">Send Message</span>
+                  <motion.span
+                    className="relative"
+                    animate={isSending ? "sending" : ""}
+                    variants={sendingVariants}
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 via-orange-400/20 to-pink-400/20 group-hover:opacity-70 transition-opacity duration-300" />
-                    <span className="absolute inset-0 backdrop-blur-sm border border-white/10" />
-                    <span className="relative">Send Message</span>
-                    <motion.span
-                      className="relative"
-                      animate={isSending ? "sending" : ""}
-                      variants={sendingVariants}
-                    >
-                      <FaPaperPlane className={`${isSending ? 'animate-bounce' : ''}`} />
-                    </motion.span>
-                  </motion.button>
-                </div>
-              </form>
-            </motion.div>
+                    <FaPaperPlane className={`relative ${isSending ? 'animate-bounce' : ''}`} />
+                  </motion.span>
+                </motion.button>
+              </div>
+            </form>
           </motion.div>
         </motion.div>
       </div>

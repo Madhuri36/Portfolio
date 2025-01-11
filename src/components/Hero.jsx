@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { FaLinkedin, FaGithub, FaInstagram, FaDownload } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
@@ -12,8 +11,8 @@ const Hero = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.3 }
-    }
+      transition: { staggerChildren: 0.3 },
+    },
   };
 
   const itemVariants = {
@@ -21,8 +20,8 @@ const Hero = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const imageVariants = {
@@ -30,8 +29,8 @@ const Hero = () => {
     visible: {
       scale: 1,
       opacity: 1,
-      transition: { duration: 1, ease: "easeOut" }
-    }
+      transition: { duration: 1, ease: "easeOut" },
+    },
   };
 
   const buttonVariants = {
@@ -60,7 +59,6 @@ const Hero = () => {
 
   const handleDownload = () => {
     setIsDownloading(true);
-    // Simulate download delay
     setTimeout(() => {
       setIsDownloading(false);
     }, 2000);
@@ -75,15 +73,23 @@ const Hero = () => {
           animate="visible"
           variants={containerVariants}
         >
-          <motion.div className="w-full md:w-1/2 space-y-8" variants={containerVariants}>
+          <motion.div
+            className="w-full md:w-1/2 space-y-8 text-center md:text-left"
+            variants={containerVariants}
+          >
             <motion.div variants={itemVariants}>
-              <h2 className="text-stone-200 text-lg md:text-xl mb-2">Hi, I am</h2>
+              <h2 className="text-stone-200 text-lg md:text-xl mb-2 py-5">
+                Hi, I am
+              </h2>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
                 Sai Madhuri
               </h1>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="text-xl md:text-3xl text-white">
+            <motion.div
+              variants={itemVariants}
+              className="text-xl md:text-3xl text-white"
+            >
               <span>I am a </span>
               <TypeAnimation
                 sequence={[
@@ -101,16 +107,32 @@ const Hero = () => {
               />
             </motion.div>
 
-            <motion.p variants={itemVariants} className="text-stone-200 text-lg md:text-xl max-w-2xl">
-              Passionate about creating beautiful, functional, and user-friendly digital experiences. 
-              Specializing in modern web technologies and creative problem-solving.
+            <motion.p
+              variants={itemVariants}
+              className="text-stone-200 text-lg md:text-xl max-w-2xl mx-auto md:mx-0"
+            >
+              Passionate about creating beautiful, functional, and user-friendly
+              digital experiences. Specializing in modern web technologies and
+              creative problem-solving.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex gap-6">
+            <motion.div variants={itemVariants} className="flex gap-6 justify-center md:justify-start">
               {[
-                { icon: FaLinkedin, href: "https://www.linkedin.com/in/sai-madhuri-bodapati/", hoverColor: "hover:text-yellow-300" },
-                { icon: FaGithub, href: "https://github.com/Madhuri36", hoverColor: "hover:text-orange-400" },
-                { icon: FaInstagram, href: "https://www.instagram.com/sai.madhurii?igsh=MWM1eGFpZ284N2s2Yg==", hoverColor: "hover:text-pink-400" }
+                {
+                  icon: FaLinkedin,
+                  href: "https://www.linkedin.com/in/sai-madhuri-bodapati/",
+                  hoverColor: "hover:text-yellow-300",
+                },
+                {
+                  icon: FaGithub,
+                  href: "https://github.com/Madhuri36",
+                  hoverColor: "hover:text-orange-400",
+                },
+                {
+                  icon: FaInstagram,
+                  href: "https://www.instagram.com/sai.madhurii?igsh=MWM1eGFpZ284N2s2Yg==",
+                  hoverColor: "hover:text-pink-400",
+                },
               ].map((social, index) => (
                 <a
                   key={index}
@@ -124,7 +146,10 @@ const Hero = () => {
               ))}
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-4 justify-center md:justify-start"
+            >
               <motion.a
                 href="#contact"
                 className="group relative px-6 py-3 text-white rounded-lg overflow-hidden"
@@ -154,22 +179,21 @@ const Hero = () => {
                   animate={isDownloading ? "downloading" : ""}
                   variants={downloadVariants}
                 >
-                  <FaDownload className={`${isDownloading ? 'animate-bounce' : ''}`} />
+                  <FaDownload
+                    className={`${isDownloading ? "animate-bounce" : ""}`}
+                  />
                 </motion.span>
               </motion.a>
             </motion.div>
           </motion.div>
 
-          <motion.div
-            className="w-full md:w-1/2"
-            variants={imageVariants}
-          >
+          <motion.div className="w-full md:w-1/2 flex justify-center" variants={imageVariants}>
             <div className="relative">
               <div className="absolute -inset-4 rounded-full opacity-30 backdrop-blur-3xl" />
               <img
                 src={hero}
                 alt="Profile"
-                className="relative rounded-3xl w-full max-w-lg mx-auto shadow-2xl border border-white/10 backdrop-blur-sm"
+                className="relative rounded-3xl w-full max-w-md mx-auto shadow-2xl border border-white/10 backdrop-blur-sm"
               />
             </div>
           </motion.div>

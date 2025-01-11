@@ -1,93 +1,6 @@
-// import { motion } from "framer-motion";
-// import { section } from "framer-motion/client";
-// import project1 from "../assets/projects1.webp";
-// import { PROJECTS } from "../constants";
-
-// const Projects = () => {
-//   const projectVariants = {
-//     hidden: {
-//       opacity: 0,
-//       scale: 0.8,
-//       rotate: -40,
-//       y: 50,
-//     },
-//     visible: {
-//       opacity: 1,
-//       scale: 1,
-//       rotate: 0,
-//       y: 0,
-//       transition: {
-//         duration: 0.6,
-//         ease: "easeOut",
-//         type: "spring",
-//         bounce: 0.4,
-//       },
-//     },
-    
-//   };
-//   const itemVariants = {
-//     hidden: { opacity: 0, y: 20 },
-//     visible: {
-//       opacity: 1,
-//       y: 0,
-//       transition: { duration: 0.8, ease: "easeOut" },
-//     },
-//   };
-
-//   return (
-//     <section className="relative min-h-screen py-20 px-6" id="projects">
-//       <motion.div variants={itemVariants} className="text-center space-y-4">
-//         <h1 className="text-4xl md:text-5xl font-bold text-white py-5">
-//           My{" "}
-//           <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400">
-//             Projects
-//           </span>
-//         </h1>
-//       </motion.div>
-//       {/* <div className="h-1 w-20 mb-8 bg-white"></div> */}
-//       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 px-6 overflow-hidden">
-//         {PROJECTS.map((project, index) => (
-//           <motion.div
-//             key={index}
-//             className="relative rounded-lg overflow-hidden h-[300px] transition transform"
-//             initial="hidden"
-//             whileInView="visible"
-//             viewport={{ once: true }}
-//             variants={projectVariants}
-//           >
-//             <img
-//               src={project.image}
-//               alt={project.name}
-//               className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-//             />
-//             <div className="relative z-20 p-6 flex flex-col justify-between h-full bg-black/30 text-white">
-//               <h2 className="text-2xl font-medium mb-4">{project.name}</h2>
-//               <div className="flex flex-col justify-between">
-//                 <p className="mb-4 flex-grow text-2xl">
-//                   {project.description}
-//                 </p>
-//                 <a href={project.link}
-//                 target="_blank"
-//                 rel="noopener norefferer"
-//                 className="bg-white text-stone-900 rounded-full py-2 px-2 w-32 text-sm hover:bg-gray-100 text-center">
-//                     View on GitHub
-
-//                 </a>
-//               </div>
-//             </div>
-//           </motion.div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Projects;
-
-
 import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { PROJECTS } from "../constants";
 
 const Projects = () => {
@@ -139,7 +52,7 @@ const Projects = () => {
 
   return (
     <section className="relative min-h-screen" id="projects">
-      <div className="relative z-10 container mx-auto px-6 py-10 md:py-20">
+      <div className="relative z-10 container mx-auto px-6 py-20 md:py-32">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -180,20 +93,39 @@ const Projects = () => {
                   <h3 className="text-xl font-bold text-white">{project.name}</h3>
                   <p className="text-stone-200 text-sm line-clamp-2">{project.description}</p>
 
-                  <motion.a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center gap-2 px-4 py-2 text-white rounded-lg overflow-hidden text-sm"
-                    variants={buttonVariants}
-                    whileHover="hover"
-                    whileTap="tap"
-                  >
-                    <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 via-orange-400/20 to-pink-400/20 group-hover:opacity-70 transition-opacity duration-300" />
-                    <span className="absolute inset-0 backdrop-blur-sm border border-white/10" />
-                    <span className="relative">View Project</span>
-                    <FaGithub className="relative" />
-                  </motion.a>
+                  <div className="flex gap-2">
+                    {/* GitHub Link */}
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center gap-2 px-4 py-2 text-white rounded-lg overflow-hidden text-sm"
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 via-orange-400/20 to-pink-400/20 group-hover:opacity-70 transition-opacity duration-300" />
+                      <span className="absolute inset-0 backdrop-blur-sm border border-white/10" />
+                      <span className="relative">GitHub</span>
+                      <FaGithub className="relative" />
+                    </motion.a>
+
+                    {/* Live Demo Link */}
+                    <motion.a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center gap-2 px-4 py-2 text-white rounded-lg overflow-hidden text-sm"
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <span className="absolute inset-0 bg-gradient-to-r from-yellow-300/20 via-orange-400/20 to-pink-400/20 group-hover:opacity-70 transition-opacity duration-300" />
+                      <span className="absolute inset-0 backdrop-blur-sm border border-white/10" />
+                      <span className="relative">Live Demo</span>
+                      <FaExternalLinkAlt className="relative" />
+                    </motion.a>
+                  </div>
                 </div>
               </motion.div>
             ))}
