@@ -1,9 +1,7 @@
 import projects1 from "../assets/projects1.webp";
 import projects2 from "../assets/projects2.webp";
 import projects3 from "../assets/projects3.webp";
-import projects4 from "../assets/projects4.webp";
-import projects5 from "../assets/projects5.webp";
-import projects6 from "../assets/projects6.webp";
+
 
 export const LINKS = [
   { href: "#home", label: "Home" },
@@ -48,11 +46,11 @@ export const PROJECTS = [
     demo: "https://wanderlust-ywx2.onrender.com/listings",
   },
   {
-    name: "Forever",
-    description: "A fashion ecommerce website with stripe integration",
+    name: "Urban Couture",
+    description: "A fashion ecommerce website built with MERN and stripe integration",
     image: projects2,
-    github: "https://github.com/your-github/nutritrack",
-    demo: "live-demo-url",
+    github: "https://github.com/Madhuri36/Urban-Couture",
+    demo: "https://urban-couture.vercel.app",
   },
   {
     name: "Personal Portfolio",
@@ -61,14 +59,14 @@ export const PROJECTS = [
     github: "https://github.com/your-github/hairrevive",
     demo: "live-demo-url",
   },
-  {
-    name: "Amazon Clone",
-    description:
-      "Interactive and Responsive amazon clone made using CSS",
-    image: projects4,
-    github: "https://github.com/your-github/devdeck",
-    demo: "live-demo-url",
-  },
+  // {
+  //   name: "Amazon Clone",
+  //   description:
+  //     "Interactive and Responsive amazon clone made using CSS",
+  //   image: projects4,
+  //   github: "https://github.com/your-github/devdeck",
+  //   demo: "live-demo-url",
+  // },
   // {
   //   name: "FitConnect",
   //   description: "Fitness social network to connect athletes and trainers",
